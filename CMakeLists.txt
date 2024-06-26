@@ -18,6 +18,8 @@ endif()
 project(steganography)
 include_directories(ext)
 
+add_compile_options(-D_GNU_SOURCE)
+
 add_library(
     stb STATIC
     ext/stb/stb_image.c
