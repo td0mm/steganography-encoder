@@ -54,7 +54,8 @@ int encode(Image &image, const std::array<std::uint8_t, 32> &password, const std
     // Find the data and padded-data size
     std::size_t size = file.tellg();
     std::size_t padded_size = size + 1; // At least one byte of padding
-    if (size % 16)
+    
+    if (padded_size % 16)
         padded_size = (size / 16 + 1) * 16;
 
     // Find the maximum possible size for the file
@@ -328,7 +329,7 @@ int main(int argc, char **argv) {
         }
         else {
             std::cout << "Password: ";
-            std::cin >> str;
+            std::getline(std::cin, str);
         }
 
         // Generate the password hash
