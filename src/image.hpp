@@ -17,6 +17,7 @@ public:
 
     bool load(const std::string &path);
     bool save(const std::string &path);
+    bool load(const std::uint8_t *membuf, std::size_t size);
 
     void encode(const std::uint8_t *data, std::size_t size, EncodingLevel level, std::size_t offset = 0);
     std::unique_ptr<std::uint8_t[]> decode(std::size_t size, EncodingLevel level, std::size_t offset = 0);

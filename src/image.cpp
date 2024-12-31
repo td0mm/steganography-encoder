@@ -30,6 +30,24 @@ bool Image::save(const std::string &path) {
     return result != 0;
 }
 
+bool Image::load(const std::uint8_t *membuf, std::size_t size) {
+    int x, y, n = 4;
+
+    auto *buffer = stbi_load_from_memory(membuf, size, &x, &y, &n, n);
+    if (!buffer)
+        return false;
+
+    image = std::make_unique<std::uint8_t[]>(x * y * 4);
+    std::copy_n(buffer, x * y * 4, image.get());
+    stbi_image_free(buffer);
+
+    width  = x;
+    height = y;
+
+    return true;
+}
+
+
 void Image::encode(const std::uint8_t *data, std::size_t size, EncodingLevel level, std::size_t offset) {
     auto image = this->image.get() + offset;
 
