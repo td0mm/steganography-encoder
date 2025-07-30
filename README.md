@@ -1,5 +1,12 @@
 # Image Steganography Tool
 
+Modification apporté pour ...
+
+- Suppression d’`argparse` et remplacement par une lecture manuelle des arguments.
+- Nettoyage de l'encodage (header et payload).
+- Alignement des offsets.
+- Suppression de toute logique de chiffrement ou de CRC.
+
 Simple C++ **Encryption** and **Steganography** tool that uses Password-Protected-Encryption to secure a file's contents, and then proceeds to embed it 
 inside an image's pixel-data using Least-Significant-Bit encoding. For Linux, MacOS, and Windows systems.
 
@@ -7,17 +14,12 @@ inside an image's pixel-data using Least-Significant-Bit encoding. For Linux, Ma
 
 ```
 $ ./steganography encode -i data/orig.png -e data/jekyll_and_hyde.zip -o output.png
-Password: 1234
-* Image size: 640x426 pixels
+* Image size: 2048x1365 pixels
 * Encoding level: Low (Default)
-* Max embed size: 132.38 KiB
-* Embed size: 61.77 KiB
-* Encrypted embed size: 61.78 KiB
-* Generated CRC32 checksum
-* Generated encryption key with PBKDF2-HMAC-SHA-256 (20000 rounds)
-* Encrypted embed with AES-256-CBC
-* Embedded jekyll_and_hyde.zip into image
-* Sucessfully wrote to output.png
+* Max embed size: 1.33 MiB
+* Embed size: 96.00 KiB
+* Embedded demon.x86.wifihome.bin into image
+* Successfully wrote to legit_output.jpg
 ```
 
 Original image:
